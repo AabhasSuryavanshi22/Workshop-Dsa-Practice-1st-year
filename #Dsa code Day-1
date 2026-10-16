@@ -1,0 +1,330 @@
+ #Dsa code Day-1
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int no = 123;
+        int res = no % 10;
+        System.out.println(res);
+    }
+}
+
+
+ #Sum of two digits
+ import java.util.*;
+
+public static void main (String[] args) {
+  int no=45;
+  int n1=no%10;
+  int n2=no/10;
+  int res=n1+n2;
+  System.out.println(res);
+}
+
+
+Sum of 6 digits
+import java.util.*;
+
+public static void main (String[] args) {
+        int no = 123456;
+
+        int n1 = no % 10;
+        no = no / 10;
+
+        int n2 = no % 10;
+        no = no / 10;
+
+        int n3 = no % 10;
+        no = no / 10;
+
+        int n4 = no % 10;
+        no = no / 10;
+
+        int n5 = no % 10;
+        no = no / 10;
+
+        int n6 = no % 10;
+
+        int res = n1 + n2 + n3 + n4 + n5 + n6;
+
+        System.out.println(res);
+    }
+
+
+    Revere 3 digit number
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n0 = 345;
+        int n1 = n0 % 10;
+        n0 /= 10;
+        int n2 = n0 % 10;
+        n0 /= 10;
+        int n3 = n0 % 10;
+
+        int res = n1 * 100 + n2 * 10 + n3;
+        System.out.println(res);
+    }
+}
+
+
+ Accept 9 digit and find sum of first and last
+
+
+
+ Arrays Defination
+ :finite, ordered , collection of homogenous data element
+
+#insert Element into Arrays:
+import java.util.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = new int[10];
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int loc = sc.nextInt();
+        int key = sc.nextInt();
+
+        for (int i = n; i > loc; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[loc] = key;
+
+        for (int i = 0; i <= n; i++) {
+            System.out.print(arr[i] + "\t");
+        }
+    }
+}
+
+
+
+#DSA Important things#
+
+Array is best choice if operation is retrival
+Array is worst choice in dsa if there is insertion and deletion in the middle
+
+Linked List is best choice if there is insertion deletion in middle
+Traversing take time if list is large
+
+
+#Delete elements into array
+
+import java.util.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = new int[10001];
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int loc = sc.nextInt();
+
+        for (int i = loc; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+
+
+import java.util.*;
+
+class MaxSubarray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int[] subarray = new int[20];
+        int sum = 0;
+        int k = 0;
+
+        for (int start = 0; start < arr.length; start++) {
+            for (int end = start; end < arr.length; end++) {
+                sum = 0;
+
+                for (int x = start; x <= end; x++) {
+                    sum = sum + arr[x];
+                }
+
+                subarray[k] = sum;
+                k++;
+            }
+        }
+
+        int max = Arrays.stream(subarray, 0, k).max().getAsInt();
+        System.out.println(max);
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int maxsum = arr[0];
+        int currsum;
+
+        for (int start = 0; start < arr.length; start++) {
+            currsum = 0;
+            for (int end = start; end < arr.length; end++) {
+                currsum += arr[end];
+                maxsum = Math.max(currsum, maxsum);
+            }
+        }
+
+        System.out.println(maxsum);
+    }
+}
+
+Ascending
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int maxsum = arr[0];
+        int currsum = arr[0];
+
+        for (int start = 1; start < arr.length; start++) {
+            currsum = Math.max(arr[start], currsum + arr[start]);
+            maxsum = Math.max(maxsum, currsum);
+        }
+
+        System.out.println(maxsum);
+    }
+}
+
+Leetcode
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxsum = nums[0];
+        int currsum = nums[0];
+
+        for (int start = 1; start < nums.length; start++) {
+            currsum = Math.max(nums[start], currsum + nums[start]);
+            maxsum = Math.max(maxsum, currsum);
+            if(currsum<0){
+                currsum=0;
+            }
+        
+    }
+    return maxsum;
+}
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {4,23,41,45,2,1};
+        for(int i=0; i<arr.length;++i){
+          for(int j=0;j<arr.length-1-i;++j){
+            if (arr[j]>arr[j+1]){ 
+            int temp=arr[j];
+            arr[j]=arr[j+1];
+            arr[j+1]=temp;
+            }
+          }
+        }
+        System.out.println(java.util.Arrays.toString(arr));
+    }
+}
+
+Decending
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {4,23,41,45,2,1};
+        for(int i=0; i<arr.length;++i){
+          for(int j=0;j<arr.length-1-i;++j){
+            if (arr[j]<arr[j+1]){ 
+            int temp=arr[j];
+            arr[j]=arr[j+1];
+            arr[j+1]=temp;
+            }
+          }
+        }
+        System.out.println(java.util.Arrays.toString(arr));
+    }
+}
+
+Binary
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int key = 2;
+        int low = 0;
+        int high = arr.length - 1;
+        boolean flag = false;
+
+        while (low <= high && !flag) {
+            int mid = (low + high) / 2;
+            if (key == arr[mid]) {
+                flag = true;
+            } else if (key < arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if (flag) {
+            System.out.println("key found");
+        } else {
+            System.out.println("key not found");
+        }
+    }
+}
+
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
+            } else if (target < nums[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
